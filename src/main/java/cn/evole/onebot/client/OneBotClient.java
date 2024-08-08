@@ -55,17 +55,22 @@ public final class OneBotClient {
     }
 
     public OneBotClient open() {
+        String token = config.getToken();
+        long botId = config.getBotId();
+        StringBuilder url = new StringBuilder();
         wsPool.execute(() -> {
-            StringBuilder builder = new StringBuilder();
-            String token = config.isAccessToken() ? config.getToken() : "";
-            builder.append(config.getUrl())
-                    .append(config.isMirai() ? "/all?verifyKey=" + token + "&qq=" + config.getBotId() : token);
+            url.append(config.getUrl())
+                    .append(config.isMirai() ? "/all?verifyKey=" + token + "&qq=" + config.getBotId() : "");
             try {
-                ws = new WSClient(this, URI.create(builder.toString()));
+                ws = new WSClient(this, URI.create(url.toString()));
+                ws.addHeader("User-Agent", "OneBot Client v4");
+                ws.addHeader("x-client-role", "Universal"); // koishi-adapter-onebot 需要这个字段
+                if (!config.getToken().isEmpty()) ws.addHeader("Authorization", "Bearer " + token);
+                if (config.getBotId() != 0) ws.addHeader("X-Self-ID", String.valueOf(botId));
                 ws.connect();
                 bot = ws.createBot();
             } catch (Exception e) {
-                logger.error("▌ §c{}连接错误，请检查服务端是否开启 §a┈━═☆", URI.create(builder.toString()));
+                logger.error("▌ §c{}连接错误，请检查服务端是否开启 §a┈━═☆", URI.create(url.toString()));
             }
         });
         return this;

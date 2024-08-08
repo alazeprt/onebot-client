@@ -56,7 +56,7 @@ public class EventFactory {
         switch (postType){
             case "message": {
                 //消息类型
-                val json = TransUtils.arrayToString(rawJson);
+                val json = TransUtils.toArray(rawJson);
                 switch (GsonUtils.getAsString(json, "message_type")){
                     case "group": {
                         //群聊消息类型

@@ -28,10 +28,12 @@ public class WSClient extends WebSocketClient {
     @Override
     public void onOpen(ServerHandshake handshake) {
         client.getLogger().info("▌ §c已连接到服务器 §a┈━═☆");
+        //handshake.iterateHttpFields().forEachRemaining(s -> System.out.println(s + ": " + handshake.getFieldValue(s)));
     }
 
     @Override
     public void onMessage(String message) {
+        System.out.println(message);
         client.getMsgHandler().handle(message);
     }
 

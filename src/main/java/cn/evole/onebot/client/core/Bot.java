@@ -46,6 +46,10 @@ public class Bot {
     @Setter
     private WebSocket channel;
 
+    @Getter
+    @Setter
+    private long botId;
+
     /**
      * @param channel                    {@link WebSocket}
      * @param actionFactory              {@link ActionFactory}

@@ -14,7 +14,7 @@ import static cn.evole.onebot.client.instances.event.MsgHandlerImpl.META_EVENT;
 
 public class TransUtils {
 
-    public static JsonObject arrayToString(JsonObject json){
+    public static JsonObject toArray(JsonObject json){
         if (json.has(META_EVENT)) return json;
         if (json.has("message") && GsonUtils.isArrayNode(json, "message")){
             json.addProperty("message", GsonUtils.getAsJsonArray(json, "message").toString());

@@ -22,21 +22,21 @@ public class BotConfig {
     @Expose
     private long botId = 0;
     @Expose
-    private boolean isAccessToken = false;//是否开启鉴权
-    @Expose
     private boolean mirai = false;//是否开启mirai,否则请使用onebot-mirai
     @Expose
     private boolean reconnect = true;//是否开启重连
     @Expose
     private int maxReconnectAttempts = 20;//重连间隔
-    @Expose
-    private String msgType = "string";//上报消息类型
+
+    public BotConfig(String url, String token){
+        this(url, token, 0, false, true, 20);
+    }
 
     public BotConfig(String url){
-        this(url, "", 0, false, false, true, 20, "string");
+        this(url, "", 0, false, true, 20);
     }
 
     public BotConfig(String url, long botId){
-        this(url, "", botId, false, false, true, 20, "string");
+        this(url, "", botId, false, true, 20);
     }
 }
