@@ -9,13 +9,11 @@ import cn.evole.onebot.client.instances.event.EventsBusImpl;
 import cn.evole.onebot.client.instances.event.MsgHandlerImpl;
 import cn.evole.onebot.client.interfaces.EventsBus;
 import cn.evole.onebot.client.interfaces.Listener;
-import cn.evole.onebot.client.internal.TestHandler;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URI;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
