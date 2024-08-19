@@ -33,7 +33,7 @@ configurations {
 
 repositories {
     maven { url = "https://repo.papermc.io/repository/maven-public/" }
-    maven { url = "https://maven.nova-committee.cn/releases"}
+    maven { url = "https://jitpack.io" }
     mavenCentral()
 }
 
@@ -53,7 +53,7 @@ dependencies {
 
     implementation("net.kyori:event-api:${eventbus_version}")
     implementation("net.kyori:event-method:${eventbus_version}")
-    implementation("cn.evole.onebot:OneBot-SDK:${sdk_version}")
+    implementation("com.github.alazeprt:onebot-sdk:-SNAPSHOT")
     implementation("org.java-websocket:Java-WebSocket:${websocket_version}")
 
     annotationProcessor("org.projectlombok:lombok:1.18.24")
